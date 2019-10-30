@@ -24,7 +24,7 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y \
 COPY summa/* ./
 
 # set environment variables for docker build
-ENV F_MASTER /code
+ENV F_MASTER /code/summa
 ENV FC gfortran
 ENV FC_EXE gfortran
 ENV FC_ENV gfortran-6-docker
