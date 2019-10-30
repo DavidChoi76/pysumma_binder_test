@@ -1,12 +1,12 @@
-#FROM ubuntu:xenial
-FROM ubuntu:18.04
+FROM ubuntu:xenial
+#FROM ubuntu:18.04
 
 #USER root
 
 # install only the packages that are needed
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    software-properties-common \ 
+    software-properties-common python-software-properties \ 
     # python-software-properties 
     ca-certificates \
     git \
@@ -15,9 +15,9 @@ RUN apt-get update && \
     liblapack-dev \
     vim \
     zip \
-    unzip \
-    python3.7 \
-    python3-pip
+    unzip 
+    #python3.7 \
+    #python3-pip
 
 
 # install gfortran-6
