@@ -46,16 +46,33 @@ RUN pip3 install --upgrade pip setuptools wheel
 RUN git clone https://github.com/uva-hydroinformatics/pysumma.git 
 RUN cd pysumma && pip3 install .
 
-USER $NB_USER
+RUN pip3 install --no-cache --upgrade pip && \
+    pip3 install --no-cache notebook
 
-WORKDIR /home/$NB_USER
+# create user with a home directory
+ARG NB_USER
+ARG NB_UID
+ENV USER ${NB_USER}
+ENV HOME /home/${NB_USER}
 
-WORKDIR /home/$NB_USER/work
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+WORKDIR ${HOME}
+USER ${USER}
+
+
+#USER $NB_USER
+
+#WORKDIR /home/$NB_USER
+
+#WORKDIR /home/$NB_USER/work
 
 # there is some problem or bug with permissions
-USER root
-RUN chown -R $NB_USER:users .
-USER $NB_USER
+#USER root
+#RUN chown -R $NB_USER:users .
+#USER $NB_USER
 
 # run summa when running the docker image
 #WORKDIR bin
