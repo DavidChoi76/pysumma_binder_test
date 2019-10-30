@@ -1,3 +1,5 @@
+## SUMMA and pySUMMA binder
+
 FROM ubuntu:xenial
 #FROM ubuntu:18.04
 
@@ -6,8 +8,7 @@ FROM ubuntu:xenial
 # install only the packages that are needed
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    software-properties-common python-software-properties \ 
-    # python-software-properties 
+     software-properties-common python-software-properties \ 
     ca-certificates \
     git \
     make \
@@ -15,9 +16,9 @@ RUN apt-get update && \
     liblapack-dev \
     vim \
     zip \
-    unzip 
-    #python3.7 \
-    #python3-pip
+    unzip \ 
+    python3 \
+    python3-pip
 
 
 # install gfortran-6
@@ -41,14 +42,7 @@ ADD . /code
 # fetch tags and build summa
 RUN git fetch --tags && make -C /code/summa/build/ -f Makefile
 
-# install the notebook package
-#RUN apt-get install -y python3.7 python-pip
-#RUN apt-get update \
-#    apt-get install python3-pip
-#RUN pip install --no-cache --upgrade pip && \
-#    pip install --no-cache notebook
-
-RUN pip install --upgrade pip setuptools wheel 
+RUN pip3 install --upgrade pip setuptools wheel 
 RUN git clone https://github.com/uva-hydroinformatics/pysumma.git 
 RUN cd pysumma && pip3 install .
 
