@@ -36,7 +36,12 @@ ADD . /code
 # fetch tags and build summa
 RUN git fetch --tags && make -C /code/summa/build/ -f Makefile
 
-RUN pip3 install --upgrade pip setuptools wheel 
+# install the notebook package
+RUN apt-get install python3-pip
+RUN pip install --no-cache --upgrade pip && \
+    pip install --no-cache notebook
+
+RUN pip install --upgrade pip setuptools wheel 
 RUN git clone https://github.com/uva-hydroinformatics/pysumma.git 
 RUN cd pysumma && pip3 install .
 
