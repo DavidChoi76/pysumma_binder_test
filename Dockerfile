@@ -62,7 +62,7 @@ RUN adduser --disabled-password \
 WORKDIR ${HOME}
 USER ${USER}
 
-
+COPY notebook/* ./
 #USER $NB_USER
 
 #WORKDIR /home/$NB_USER
