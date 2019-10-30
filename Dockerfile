@@ -6,7 +6,8 @@ FROM ubuntu:18.04
 # install only the packages that are needed
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    software-properties-common \ # python-software-properties \
+    software-properties-common \ 
+    # python-software-properties 
     ca-certificates \
     git \
     make \
