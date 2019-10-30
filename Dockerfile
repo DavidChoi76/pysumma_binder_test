@@ -37,7 +37,8 @@ ADD . /code
 RUN git fetch --tags && make -C /code/summa/build/ -f Makefile
 
 # install the notebook package
-RUN apt-get install python3-pip
+RUN apt-get update \
+    apt-get install python3-pip
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook
 
