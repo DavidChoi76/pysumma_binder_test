@@ -34,7 +34,7 @@ WORKDIR /code
 ADD . /code
 
 # fetch tags and build summa
-RUN git fetch --tags && make -C code/build/ -f Makefile
+RUN git fetch --tags && make -C summa/code/build/ -f Makefile
 
 RUN pip3 install --upgrade pip setuptools wheel 
 RUN git clone https://github.com/uva-hydroinformatics/pysumma.git 
