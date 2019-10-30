@@ -12,8 +12,11 @@ RUN apt-get update && \
     libnetcdff-dev \
     liblapack-dev \
     vim \
-	zip \
-	unzip
+    zip \
+    unzip \
+    python3.7 \
+    python3-pip
+
 
 # install gfortran-6
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y \
@@ -37,7 +40,7 @@ ADD . /code
 RUN git fetch --tags && make -C /code/summa/build/ -f Makefile
 
 # install the notebook package
-RUN apt-get install -y python3.7 python-pip
+#RUN apt-get install -y python3.7 python-pip
 #RUN apt-get update \
 #    apt-get install python3-pip
 #RUN pip install --no-cache --upgrade pip && \
