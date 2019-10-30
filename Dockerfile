@@ -1,6 +1,7 @@
-FROM ubuntu:xenial
+#FROM ubuntu:xenial
+FROM ubuntu:18.04
 
-USER root
+#USER root
 
 # install only the packages that are needed
 RUN apt-get update && \
