@@ -22,10 +22,13 @@ RUN apt-get update && \
 
 
 # install gfortran-6
-RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends gfortran-6 \
-    && apt-get clean
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y 
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends gfortran-6
+RUN apt-get clean
+    #&& apt-get update \
+   # && apt-get install -y --no-install-recommends gfortran-6 \
+    #&& apt-get clean
 
 COPY summa/* ./
 
