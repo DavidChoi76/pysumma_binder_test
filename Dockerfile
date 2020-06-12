@@ -46,7 +46,7 @@ ADD . /code
 RUN git fetch --tags && make -C /code/summa/build/ -f Makefile
 
 RUN pip3 install --upgrade pip setuptools wheel 
-RUN git clone https://github.com/uva-hydroinformatics/pysumma.git 
+RUN git clone https://github.com/DavidChoi76/pysumma.git 
 RUN cd pysumma && pip3 install .
 
 RUN pip3 install --no-cache --upgrade pip && \
